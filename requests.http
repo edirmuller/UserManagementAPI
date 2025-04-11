@@ -1,0 +1,41 @@
+@baseUrl = http://localhost:5138
+
+
+### POST generate token
+
+POST {{baseUrl}}/generate-token?username=edir
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZGlyIiwianRpIjoiMTA2NThlNmEtN2YyOS00NDBkLWE2ZjAtZWFlNWMwYWMwOGVlIiwiZXhwIjoxNzQ0MTY4MTM4LCJpc3MiOiJ5b3VyLWFwcCIsImF1ZCI6InlvdXItYXBwIn0.vnVEidhMmtwK3HNHUwg_4th960vjrWTra8wW_iCcOWo
+
+
+### GET all users
+GET {{baseUrl}}/users
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### GET a specific user by ID
+GET {{baseUrl}}/users/13
+Accept: application/json
+
+### POST (Create a new user)
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+    "Id": 3,
+    "Name": "Charlie",
+    "Email": "charlie@example.com"
+}
+
+### PUT (Update an existing user)
+PUT {{baseUrl}}/users/3
+Content-Type: application/json
+
+{
+    "Name": "Charlie Updated",
+    "Email": "charlie.updated@example.com"
+}
+
+### DELETE a user by ID
+DELETE {{baseUrl}}/users/3
+
